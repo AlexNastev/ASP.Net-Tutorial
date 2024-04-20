@@ -1,3 +1,6 @@
+using ASP.Net_Tutorial.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace ASP.Net_Tutorial
 {
     public class Program
@@ -8,6 +11,8 @@ namespace ASP.Net_Tutorial
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
+                builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
